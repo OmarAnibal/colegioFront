@@ -1,0 +1,103 @@
+<h2 mat-dialog-title>Registrar Persona</h2>
+<mat-dialog-content>
+
+  <form [formGroup]="formPersona">
+    <div class="row">
+
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Tipo de Identificacion</mat-label>
+          <mat-select formControlName="tiId">
+            <mat-option *ngFor="let ti of listaTipoId " [value]="ti.id">
+              {{ti.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Pais</mat-label>
+          <mat-select formControlName="pais" (selectionChange)="obtenerDepartamentoPorPaisId()">
+            <mat-option *ngFor="let p of listaPais " [value]="p.id">
+              {{p.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Departamento</mat-label>
+          <mat-select formControlName="departamento" (selectionChange)="listarMunicipioPorDepartamento()">
+            <mat-option *ngFor="let dep of listaDepartamento " [value]="dep.id">
+              {{dep.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Municipio</mat-label>
+          <mat-select formControlName="municipio">
+            <mat-option *ngFor="let m of listaMunicipio " [value]="m.id">
+              {{m.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Numero de Identificacion</mat-label>
+          <input matInput formControlName="numeroIdentificacion" maxlength="50">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" maxlength="50">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido" maxlength="50">
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Telefono</mat-label>
+          <input matInput formControlName="telefono" maxlength="50">
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="form">
+          <mat-label>Direccion</mat-label>
+          <input matInput formControlName="direccion" maxlength="50">
+        </mat-form-field>
+      </div>
+
+
+      <div class="col-12">
+        <mat-form-field class="form">
+         <mat-label>Email</mat-label>
+          <input matInput formControlName="email" maxlength="50">
+        </mat-form-field>
+      </div>
+
+   
+      </div>
+    </div>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="btn btn-secondary mr-1" mat-dialog-close>Cancelar</button>
+  <button class="btn btn-success" (click)="guardar()" [disabled]="!formPersona.valid">Registrar</button>  
+</mat-dialog-actions>
